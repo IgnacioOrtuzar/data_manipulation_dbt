@@ -1,11 +1,10 @@
-SELECT 
-
-product_id, 
-product_name, 
-category, 
-price, 
-cost, 
-created_at, 
-product_status
+SELECT
+    product_id,
+    initcap(trim(product_name)) as product_name,
+    lower(trim(category)) as category,
+    cast(price as numeric(10,2)) as price,
+    cast(cost as numeric(10,2)) as cost,
+    created_at,
+    product_status
 
 FROM {{source('raw','products')}}
